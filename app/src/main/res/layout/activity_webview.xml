@@ -3,16 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/load"
+    <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="LOAD"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/loadUrl"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="loadUrl"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/evaluateJavascript"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="evaluateJavascript"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
 
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/load"/>
+        android:layout_below="@+id/container"/>
 
 </RelativeLayout>
