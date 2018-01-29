@@ -115,3 +115,21 @@
 >
     代码不再贴出，详细代码请参见：[代码地址](https://github.com/ZLOVE320483/android_js/blob/master/app/src/main/java/com/github/js/MainActivity.java)
     运行结果如下：![运行结果](https://github.com/ZLOVE320483/android_js/blob/master/img/device-2018-01-29-141039.png)
+#### 2.2 通过 WebViewClient 的方法shouldOverrideUrlLoading()回调拦截 url
+>
+    代码不再贴出，详细代码请参见：[代码地址](https://github.com/ZLOVE320483/android_js/blob/master/app/src/main/java/com/github/js/MainActivity.java)
+    运行结果如下：![运行结果](https://github.com/ZLOVE320483/android_js/blob/master/img/device-2018-01-29-143815.png)
+#### 2.3 通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt()方法回调拦截JS对话框alert()、confirm()、prompt()消息
+>
+    代码不再贴出，详细代码请参见：[代码地址](https://github.com/ZLOVE320483/android_js/blob/master/app/src/main/java/com/github/js/MainActivity.java)
+    运行结果如下：![运行结果](https://github.com/ZLOVE320483/android_js/blob/master/img/device-2018-01-29-152839.png)
+>>###### 2.3.1 onJsAlert()、onJsConfirm()、onJsPrompt()三者之间的比较
+>>
+| 方法 | 作用 | 返回值 |
+| :-: | :-: | :-: |
+| alert() | 弹出警告框 | 没有 |
+| confirm() | 弹出确认框 | 两个返回值（true或false） |
+| prompt() | 弹出输入框 | 任意设置返回值 |
+>>###### 2.3.2 总结
+    常用的拦截是：拦截 JS的输入框（即prompt()方法），因为只有prompt()可以返回任意类型的值，操作最全面方便、更加灵活，
+    而alert()对话框没有返回值，confirm()对话框只能返回两种状态（确定 / 取消）两个值。
