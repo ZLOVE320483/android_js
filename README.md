@@ -36,7 +36,7 @@
     }
     
     private void setListener() {
-        btnRun.setOnClickListener(new View.OnClickListener() {
+        btnLoadUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 webView.post(new Runnable() {
@@ -66,5 +66,47 @@
             </script>
         </head>
         </html>
+>
+    运行结果如图
+![运行结果](https://github.com/ZLOVE320483/android_js/blob/master/img/device-2018-01-29-104644.png)
+#### 1.2 通过WebView的evaluateJavascript()
+        android客户端代码：
+>
+     btnEvaluateJavascript.setOnClickListener(new View.OnClickListener() {
 
-                    
+            @TargetApi(19)
+            @Override
+            public void onClick(final View v) {
+                webView.evaluateJavascript("javascript:callJS()", new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        //此处为 js 返回的结果
+                        Log.d(TAG, "value---" + value);
+                    }
+                });
+            }
+        });
+>
+    运行结果跟上图是一样的。
+>
+    两种交互方式的比较
+>
+| 调用方式 | 优点 | 缺点 | 使用场景 |
+| :-: | :-: | :-: | :-: |
+| 使用loadUrl() | 方便简洁 | 效率低；获取返回值麻烦 | 不需要使用返回值，对性能要求较低 |
+| 使用evaluateJavascript() | 效率高 | 向下兼容性差（仅Android 4.4以上可用） | Android 4.4及以上 |
+#### 1.3 使用建议
+>
+    // Android版本变量
+    final int version = Build.VERSION.SDK_INT;
+    // 因为该方法在 Android 4.4 版本才可使用，所以使用时需进行版本判断
+    if (version < 18) {
+        webView.loadUrl("javascript:callJS()");
+    } else {
+        webView.evaluateJavascript（"javascript:callJS()", new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String value) {
+                //此处为 js 返回的结果
+            }
+        });
+    }
