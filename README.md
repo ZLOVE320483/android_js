@@ -110,3 +110,8 @@
             }
         });
     }
+## 2. JS调用Android方法
+#### 2.1 通过WebView的addJavascriptInterface()进行对象映射 
+>
+    代码不再贴出，详细代码请参见：[代码地址](https://github.com/ZLOVE320483/android_js/blob/master/app/src/main/java/com/github/js/MainActivity.java)
+    运行结果如下：![运行结果](https://github.com/ZLOVE320483/android_js/blob/master/img/device-2018-01-29-141039.png)
