@@ -133,3 +133,11 @@
 >>###### 2.3.2 总结
     常用的拦截是：拦截 JS的输入框（即prompt()方法），因为只有prompt()可以返回任意类型的值，操作最全面方便、更加灵活，
     而alert()对话框没有返回值，confirm()对话框只能返回两种状态（确定 / 取消）两个值。
+#### 2.4 三种Android Call Js 方式的对比以及使用场景
+| 调用方式 | 优点 | 缺点 | 使用场景 |
+| :-: | :-: | :-: | :-: |
+| 通过WebView的addJavascriptInterface()<br>进行对象映射  | 方便简洁 | Android 4.2以下存在漏洞问题 | Android 4.2以上相对简单的互调场景 |
+| 通过 WebViewClient 的方法shouldOverrideUrlLoading()<br>回调拦截 url | 不存在漏洞问题 | 有协议约束，客户端向前端传值繁琐 | 不需要返回值的互调场景 |
+| 通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt()方法<br>回调拦截JS对话框alert()、confirm()、prompt()消息 | 不存在漏洞问题 | 有协议约束 | 能满足大多数情况下的互调场景 |
+>
+    附：[WebView的addJavascriptInterface()方法在Android 4.2以下存在的漏洞](http://blog.csdn.net/carson_ho/article/details/64904635)
