@@ -8,10 +8,15 @@
             // 由于对象映射，所以调用test对象等于调用Android映射的对象
             jsCallback.hello("js调用了android中的hello方法");
          }
+
+         function callAndroidByShouldOverrideUrlLoading() {
+            document.location = "scheme://authority?arg1=111&arg2=222";
+         }
       </script>
 </head>
 <body>
 <!-- 点击按钮则调用callAndroid函数 -->
 <button type="button" id="button1" onclick="callAndroid()">Call Android</button>
+<button type="button" id="button2" onclick="callAndroidByShouldOverrideUrlLoading()">Call Android By ShouldOverrideUrlLoading</button>
 </body>
 </html>
