@@ -5,18 +5,39 @@
     <title>Carson</title>
     <script>
          function callAndroid(){
-            // 由于对象映射，所以调用test对象等于调用Android映射的对象
+            // 由于对象映射，所以调用jsCallback对象等于调用Android映射的对象
             jsCallback.hello("js调用了android中的hello方法");
          }
 
          function callAndroidByShouldOverrideUrlLoading() {
             document.location = "scheme://authority?arg1=111&arg2=222";
          }
+
+        function callAndroidByAlert() {
+            alert("scheme://authority?callWay=alert")
+        }
+
+        function callAndroidByConfirm() {
+            var result = confirm("scheme://authority?callWay=confirm")
+            alert("android端返回的结果是：" + result)
+        }
+
+        function callAndroidByPrompt() {
+            var result = prompt("scheme://authority?callWay=prompt")
+            alert("android端返回的结果是：" + result)
+        }
       </script>
 </head>
 <body>
 <!-- 点击按钮则调用callAndroid函数 -->
 <button type="button" id="button1" onclick="callAndroid()">Call Android</button>
+<br>
 <button type="button" id="button2" onclick="callAndroidByShouldOverrideUrlLoading()">Call Android By ShouldOverrideUrlLoading</button>
+<br>
+<button type="button" id="button3" onclick="callAndroidByAlert()">Call Android By Alert</button>
+<br>
+<button type="button" id="button4" onclick="callAndroidByConfirm()">Call Android By Confirm</button>
+<br>
+<button type="button" id="button5" onclick="callAndroidByPrompt()">Call Android By Prompt</button>
 </body>
 </html>
