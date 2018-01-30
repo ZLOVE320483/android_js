@@ -141,3 +141,4 @@
 | 通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt()方法<br>回调拦截JS对话框alert()、confirm()、prompt()消息 | 不存在漏洞问题 | 有协议约束 | 能满足大多数情况下的互调场景 |
 >
     附：[WebView的addJavascriptInterface()方法在Android 4.2以下存在的漏洞](http://blog.csdn.net/carson_ho/article/details/64904635)
+# 以上都是对基础知识的回顾，下面的才是本项目的解释说明。注意了，以下才是本项目的解释说明！！！
