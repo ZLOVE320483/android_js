@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--ssl error-->
+    <string name="ssl_certificate_error" translatable="false">SSL Certificate error.</string>
+    <string name="ssl_untrusted" translatable="false">The certificate authority is not trusted.</string>
+    <string name="ssl_expired" translatable="false">The certificate has expired.</string>
+    <string name="ssl_mismatch" translatable="false">The certificate Hostname mismatch.</string>
+    <string name="ssl_valid" translatable="false">The certificate is not yet valid.</string>
+    <string name="ssl_error_title" translatable="false">SSL Certificate Error</string>
+    <string name="ssl_continue_anyway" translatable="false">Do you want to continue anyway ?</string>
+</resources>

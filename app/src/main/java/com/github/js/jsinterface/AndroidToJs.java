@@ -1,7 +1,9 @@
-package com.github.js;
+package com.github.js.jsinterface;
 
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
+
+import com.github.js.app.App;
 
 /**
  * Created by zlove on 2018/1/29.

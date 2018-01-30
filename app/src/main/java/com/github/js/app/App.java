@@ -1,4 +1,4 @@
-package com.github.js;
+package com.github.js.app;
 
 import android.app.Application;
 
