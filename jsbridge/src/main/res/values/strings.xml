@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">jsbridge</string>
+    <string name="cancel">cancel</string>
 </resources>
