@@ -142,3 +142,39 @@
 >
     附：[WebView的addJavascriptInterface()方法在Android 4.2以下存在的漏洞](http://blog.csdn.net/carson_ho/article/details/64904635)
 # 以上都是对基础知识的回顾，下面的才是本项目的解释说明。注意了，以下才是本项目的解释说明！！！
+先来看一下项目运行的效果图：
+![](https://github.com/ZLOVE320483/android_js/blob/master/img/device-2018-01-30-171110.png)
+
+    大家会说，这个不是跟拦截JS的prompt()方法一样么，没错，js和android之间的交互，也无非上面提到的几种方法，这里做的封装采用的是：
+    js调android：通过WebView的addJavascriptInterface()进行对象映射
+    android回调js:android 4.4以上采用WebView的evaluateJavascript()方法，android 4.4以下采用loadUrl()方法
+>
+    android端代码：
+[JsBridgeWebView](https://github.com/ZLOVE320483/android_js/blob/master/jsbridge/src/main/java/com/github/jsbridge/JsBridgeWebView.java) 这是一个继承WebView的类，它里面向JS注入了一个对象供JS调用，JS可以通过这个对象调用Native的方法，调哪个方法，传哪些参数，完全由JS决定，方法名必须两端协议，Native通过反射找到对应的方法。传递过来的参数重包含了JS回调方法的方法名，客户端执行完相应的操作之后再去执行JS的方法。
+>
+    js代码：
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+            <title>Carson</title>
+            <script>
+                function callAndroid(){
+                    // 由于对象映射，所以调用jsCallback对象等于调用Android映射的对象
+                    var json = "{\"name\": \"zlove\", \"_dscbstub\": \"callback\"}"
+                    _jsbridge.call("testAsync", json);
+                 }
+                 function callback(result) {
+                    alert("客户端返回的结果是：" + result)
+                 }
+            </script>
+    </head>
+    <body>
+    <!-- 点击按钮则调用callAndroid函数 -->
+    <button type="button" id="button1" style="font-size:30px" onclick="callAndroid()">Call Android</button>
+    </body>
+    </html>
+>
+    var json = "{\"name\": \"zlove\", \"_dscbstub\": \"callback\"}" 
+    _jsbridge.call("testAsync", json);
+    _jsbridge表示客户端注入的对象，testAsync是方法名，json是参数，而_dscbstub对应的callback是js的回调方法。
